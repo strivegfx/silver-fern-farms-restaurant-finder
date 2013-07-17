@@ -1,0 +1,14 @@
+/* line 1, ../sass/main.scss */
+#map {
+  height: 500px; }
+  /* line 4, ../sass/main.scss */
+  #map .leaflet-marker-icon {
+    position: absolute; }
+    /* line 7, ../sass/main.scss */
+    #map .leaflet-marker-icon:after {
+      position: absolute;
+      display: block;
+      content: "HELLO";
+      width: 50px;
+      height: 25px;
+      background-color: red; }
