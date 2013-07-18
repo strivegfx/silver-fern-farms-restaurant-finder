@@ -1,16 +1,141 @@
+@import "compass/css3";
+
+*, *:after, *:before {
+	@include box-sizing(border-box);
+}
+
+.clear-fix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+$gray: #999999;
+$brand-green: #129a5f;
+$dark-green: #00351d;
+
+.module-container{
+	//position: absolute;
+	width: 940px;
+	margin: 0 auto 0 auto;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.temp-stuff-header{
+	width: 100%;
+	height: 214px;
+	background-image: url(../img/temp-stuff-header.png);
+}
+
+// --- MENU ---
+
+.menu{
+	width: 100%;
+
+	.selection-container{
+		position: relative;
+		float: left;
+		width: 50%;
+
+		&.cuisine:before{
+			position: absolute;
+			display: block;
+			content: "";
+			left: -25px;
+			width: 25px;
+			height: 100%;
+			background-image: url(../img/divider-shadow.jpg);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;  
+		}
+
+		h2{
+			color: $brand-green;
+		}
+
+		ul{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+
+			li{
+				position: relative;
+				float: left;
+				font-size: 13px;
+				width: 50%;
+				color: $dark-green;
+				cursor: pointer;
+				padding: 0 0 5px 20px;
+
+				&:before{
+					position: absolute;
+					display: block;
+					content: "";
+					width: 8px;
+					height: 8px;
+					top: 4px;
+					left: 0;
+					background-color: white;
+					border: 1px solid;
+					border-color: $dark-green;
+				}
+
+				&:hover{
+					color: $brand-green;
+
+					&:before{
+						border-color: $brand-green;
+					}
+				}
+
+				&[data-active="true"]{
+					color: $brand-green;
+
+					&:before{
+						border-color: $brand-green;
+						background-color: $brand-green;
+					}
+				}
+			}
+		}
+	}
+}
+
+// --- SHADOW ---
+
+.shadow{
+	width: 100%;
+	height: 50px;
+	background-color: red;
+	clear: both;
+	background-image: url(../img/block-shadow.jpg);
+}
+
+.top-shadow{
+	background-position: center top;
+}
+
+.bottom-shadow{
+	background-position: center bottom;
+}
+
+// --- MAP ---
+
 #map{
-	height: 500px;
+	height: 700px;
+	clear: both;
 
 	.leaflet-marker-icon{
 		position: absolute;
 
-		&:after{
+		/*&:after{
 			position: absolute;
 			display: block;
 			content: "HELLO";
 			width: 50px;
 			height: 25px;
 			background-color: red;
-		}
+		}*/
 	}
 }

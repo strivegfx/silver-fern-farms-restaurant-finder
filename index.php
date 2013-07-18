@@ -29,9 +29,52 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <p>Leaflet-js Mapping Trial</p>
 
-        <div id="map"></div>
+        <div class="module-container">
+
+            <div class="temp-stuff-header"></div>
+
+            <div class="menu">
+
+                <div class="selection-container location">
+                    <h2>location</h2>
+                    <ul>
+                        <li data-selection="auckland" data-active="false">Auckland</li>
+                        <li data-selection="otago" data-active="false">Otago</li>
+                        <li data-selection="christchurch" data-active="false">Christchurch</li>
+                        <li data-selection="dunedin" data-active="false">Dunedin</li>
+                        <li data-selection="hamilton" data-active="false">Hamilton</li>
+                        <li data-selection="hawkes-bay" data-active="false">Hawke's Bay</li>
+                        <li data-selection="canterbury" data-active="false">Canterbury</li>
+                        <li data-selection="wellington" data-active="false">Wellington</li>
+                    </ul>
+                </div>
+
+                <div class="selection-container cuisine">
+                    <h2>cuisine</h2>
+                    <ul>
+                        <li data-selection="bistro" data-active="false">Bistro</li>
+                        <li data-selection="european" data-active="false">European</li>
+                        <li data-selection="french" data-active="false">French</li>
+                        <li data-selection="italian" data-active="false">Italian</li>
+                        <li data-selection="japanese" data-active="false">Japanese</li>
+                        <li data-selection="mediterranean" data-active="false">Mediterranean</li>
+                        <li data-selection="seafood" data-active="false">Seafood</li>
+                        <li data-selection="steak" data-active="false">Steak</li>
+                        <li data-selection="thai" data-active="false">Thai</li>
+                        <li data-selection="vietnamese" data-active="false">Vietnamese</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="shadow top-shadow"></div>
+
+            <div id="map"></div>
+
+            <div class="shadow bottom-shadow"></div>
+
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
