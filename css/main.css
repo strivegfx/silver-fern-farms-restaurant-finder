@@ -29,7 +29,11 @@
 /* line 35, ../sass/main.scss */
 .user-query {
   z-index: 900;
+<<<<<<< HEAD
   position: absolute;
+=======
+  position: relative;
+>>>>>>> revised-menu
   top: 0;
   left: 45px;
   width: 850px;
@@ -126,10 +130,44 @@
       .user-query .selection ul li {
         padding: 5px 25px; }
         /* line 113, ../sass/main.scss */
+<<<<<<< HEAD
         .user-query .selection ul li:hover {
           background-color: #129a5f; }
 
 /* line 121, ../sass/main.scss */
+=======
+        .user-query .selection ul li[data-selection="my-location"] {
+          display: none; }
+        /* line 117, ../sass/main.scss */
+        .user-query .selection ul li.close {
+          position: absolute;
+          display: block;
+          right: -8px;
+          top: -8px;
+          padding: 0;
+          width: 30px;
+          height: 30px;
+          background-color: #00351d;
+          background-image: url(../img/close-icon.png);
+          background-position: center bottom;
+          border: 1px solid #129a5f;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          border-radius: 50%;
+          -webkit-box-shadow: -5px 5px 15px 0 rgba(0, 0, 0, 0.5);
+          -moz-box-shadow: -5px 5px 15px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: -5px 5px 15px 0 rgba(0, 0, 0, 0.5); }
+          /* line 132, ../sass/main.scss */
+          .user-query .selection ul li.close:hover {
+            background-position: center top; }
+        /* line 137, ../sass/main.scss */
+        .user-query .selection ul li:hover {
+          background-color: #129a5f; }
+
+/* line 146, ../sass/main.scss */
+>>>>>>> revised-menu
 .white-out {
   z-index: 800;
   position: absolute;
@@ -141,6 +179,7 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8; }
 
+<<<<<<< HEAD
 /*.menu{
 	width: 100%;
 
@@ -213,27 +252,42 @@
 	}
 }*/
 /* line 208, ../sass/main.scss */
+=======
+/* line 159, ../sass/main.scss */
+>>>>>>> revised-menu
 .shadow {
   width: 100%;
   height: 50px;
-  background-color: red;
   clear: both;
   background-image: url(../img/block-shadow.jpg); }
 
+<<<<<<< HEAD
 /* line 216, ../sass/main.scss */
+=======
+/* line 166, ../sass/main.scss */
+>>>>>>> revised-menu
 .top-shadow {
   padding-top: 150px;
   background-position: center top; }
 
+<<<<<<< HEAD
 /* line 221, ../sass/main.scss */
 .bottom-shadow {
   background-position: center bottom; }
 
 /* line 227, ../sass/main.scss */
+=======
+/* line 170, ../sass/main.scss */
+.bottom-shadow {
+  background-position: center bottom; }
+
+/* line 176, ../sass/main.scss */
+>>>>>>> revised-menu
 #map {
   z-index: 0;
   height: 700px;
   clear: both; }
+<<<<<<< HEAD
   /* line 232, ../sass/main.scss */
   #map .leaflet-marker-icon {
     position: absolute;
@@ -245,3 +299,13 @@
     	height: 25px;
     	background-color: red;
     }*/ }
+=======
+  /* line 181, ../sass/main.scss */
+  #map img[src*="http://a.tiles.mapbox.com/v3/marker/pin-l+333333.png"] {
+    background-image: url("../img/silver-fern-farms-marker.png") !important;
+    background-size: cover !important;
+    width: 50px !important;
+    display: inline-block !important;
+    padding: 128px 0 0 0 !important;
+    height: 0px !important; }
+>>>>>>> revised-menu

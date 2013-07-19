@@ -30,6 +30,7 @@ $col-shadow: #000;
 	background-image: url(../img/temp-stuff-header.png);
 	background-position: center top;
 	background-repeat: no-repeat;
+<<<<<<< HEAD
 }
 
 .user-query{
@@ -133,82 +134,137 @@ $col-shadow: #000;
 
 /*.menu{
 	width: 100%;
+=======
+}
 
-	.selection-container{
+.user-query{
+	z-index: 900;
+	position: relative;
+	top: 0;
+	left: 45px;
+	width: 850px;
+	height: auto;
+	padding: 50px;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 200;
+	font-style: italic;
+	text-align: center;
+	font-size: 50px;
+	@include text-shadow(0px 2px 3px $dark-green);
+	@include border-radius(15px);
+	@include box-shadow(0 50px 50px -50px $col-shadow);
+
+	&:before, &:after{
+		z-index: -1;
+		position: absolute;
+		display: block;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@include border-radius(15px);
+	}
+>>>>>>> revised-menu
+
+	&:before{
+		background-color: $brand-green;
+	}
+
+	&:after{
+		@include background(linear-gradient(bottom, rgba($dark-green, 0.5), rgba($dark-green, 0)));
+	}
+
+	.selection{
+		display: inline-block;
 		position: relative;
-		float: left;
-		width: 50%;
-
-		&.cuisine:before{
-			position: absolute;
-			display: block;
-			content: "";
-			left: -25px;
-			width: 25px;
-			height: 100%;
-			background-image: url(../img/divider-shadow.jpg);
-			background-size: 100% 100%;
-			background-repeat: no-repeat;  
-		}
-
-		h2{
-			color: $brand-green;
-		}
+		cursor: pointer;
+		color: $dark-green;
+		@include text-shadow(none);
 
 		ul{
+			z-index: 1000;
+			position: absolute;
+			display: none;
+			left: 0; // offset for greensock tween
+			top: 0; // offset for greensock tween
 			list-style-type: none;
-			margin: 0;
+			color: white;
+			font-size: 30px;
 			padding: 0;
+			background-color: $dark-green;
+			@include transform(translateX(-50%));
+			@include border-radius(5px);
+			@include opacity(0); // offset for greensock tween
+			@include box-shadow(0 30px 30px -25px $col-shadow);
+
+			&:before{
+				position: absolute;
+				display: block;
+				content: "";
+				top: -20px;
+				left: 50%;
+				margin-left: -15px;
+				width: 0; 
+				height: 0;
+				border-bottom: 20px solid $dark-green;
+				border-left: 20px solid transparent; 
+				border-right: 20px solid transparent;
+			}
 
 			li{
-				position: relative;
-				float: left;
-				font-size: 13px;
-				width: 50%;
-				color: $dark-green;
-				cursor: pointer;
-				padding: 0 0 5px 20px;
+				padding: 5px 25px;
 
-				&:before{
+				&[data-selection="my-location"]{
+					display: none; // will be displayed if user location can be found
+				}
+
+				&.close{
 					position: absolute;
 					display: block;
-					content: "";
-					width: 8px;
-					height: 8px;
-					top: 4px;
-					left: 0;
-					background-color: white;
-					border: 1px solid;
-					border-color: $dark-green;
+					right: -8px;
+					top: -8px;
+					padding: 0;
+					width: 30px;
+					height: 30px;
+					background-color: $dark-green;
+					background-image: url(../img/close-icon.png);
+					background-position: center bottom;
+					border: 1px solid $brand-green;
+					@include border-radius(50%);
+					@include box-shadow(-5px 5px 15px 0 rgba($col-shadow, 0.5));
+
+					&:hover{
+						background-position: center top;
+					}
 				}
 
 				&:hover{
-					color: $brand-green;
-
-					&:before{
-						border-color: $brand-green;
-					}
-				}
-
-				&[data-active="true"]{
-					color: $brand-green;
-
-					&:before{
-						border-color: $brand-green;
-						background-color: $brand-green;
-					}
+					//@include transition(background-color 1s ease);
+					background-color: $brand-green;
 				}
 			}
 		}
 	}
 }*/
 
+.white-out{
+	z-index: 800;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+	@include opacity(0.8);
+}
+
 // --- SHADOW ---
 
 .shadow{
 	width: 100%;
 	height: 50px;
-	background-color: red;
 	clear: both;
 	background-image: url(../img/block-shadow.jpg);
 }
@@ -229,16 +285,12 @@ $col-shadow: #000;
 	height: 700px;
 	clear: both;
 
-	.leaflet-marker-icon{
-		position: absolute;
-
-		/*&:after{
-			position: absolute;
-			display: block;
-			content: "HELLO";
-			width: 50px;
-			height: 25px;
-			background-color: red;
-		}*/
+	img[src*="http://a.tiles.mapbox.com/v3/marker/pin-l+333333.png"] {
+	    background-image: url("../img/silver-fern-farms-marker.png") !important;
+	    background-size: cover !important;
+	    width: 50px !important;
+	    display:inline-block !important;
+	    padding: 128px 0 0 0 !important;
+	    height: 0px !important;
 	}
 }
