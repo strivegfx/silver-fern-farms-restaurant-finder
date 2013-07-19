@@ -1,91 +1,218 @@
-/* line 3, ../sass/main.scss */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic);
+/* line 4, ../sass/main.scss */
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 7, ../sass/main.scss */
+/* line 8, ../sass/main.scss */
 .clear-fix:after {
   content: "";
   display: table;
   clear: both; }
 
-/* line 17, ../sass/main.scss */
+/* line 19, ../sass/main.scss */
 .module-container {
+  position: relative;
   width: 940px;
   margin: 0 auto 0 auto;
-  font-family: Arial, Helvetica, sans-serif;
   text-decoration: none; }
 
-/* line 25, ../sass/main.scss */
+/* line 27, ../sass/main.scss */
 .temp-stuff-header {
   width: 100%;
   height: 214px;
-  background-image: url(../img/temp-stuff-header.png); }
+  background-image: url(../img/temp-stuff-header.png);
+  background-position: center top;
+  background-repeat: no-repeat; }
 
-/* line 33, ../sass/main.scss */
-.menu {
-  width: 100%; }
-  /* line 36, ../sass/main.scss */
-  .menu .selection-container {
+/* line 35, ../sass/main.scss */
+.user-query {
+  z-index: 900;
+  position: absolute;
+  top: 0;
+  left: 45px;
+  width: 850px;
+  height: auto;
+  padding: 50px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 200;
+  font-style: italic;
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 0px 2px 3px #00351d;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: 0 50px 50px -50px black;
+  -moz-box-shadow: 0 50px 50px -50px black;
+  box-shadow: 0 50px 50px -50px black; }
+  /* line 53, ../sass/main.scss */
+  .user-query:before, .user-query:after {
+    z-index: -1;
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px; }
+  /* line 65, ../sass/main.scss */
+  .user-query:before {
+    background-color: #129a5f; }
+  /* line 69, ../sass/main.scss */
+  .user-query:after {
+    background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(0, 53, 29, 0.5)), color-stop(100%, rgba(0, 53, 29, 0)));
+    background: -webkit-linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0));
+    background: -moz-linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0));
+    background: -o-linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0));
+    background: linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0)); }
+  /* line 73, ../sass/main.scss */
+  .user-query .selection {
+    display: inline-block;
     position: relative;
-    float: left;
-    width: 50%; }
-    /* line 41, ../sass/main.scss */
-    .menu .selection-container.cuisine:before {
+    cursor: pointer;
+    color: #00351d;
+    text-shadow: none; }
+    /* line 80, ../sass/main.scss */
+    .user-query .selection ul {
+      z-index: 1000;
       position: absolute;
-      display: block;
-      content: "";
-      left: -25px;
-      width: 25px;
-      height: 100%;
-      background-image: url(../img/divider-shadow.jpg);
-      background-size: 100% 100%;
-      background-repeat: no-repeat; }
-    /* line 53, ../sass/main.scss */
-    .menu .selection-container h2 {
-      color: #129a5f; }
-    /* line 57, ../sass/main.scss */
-    .menu .selection-container ul {
+      display: none;
+      left: 0;
+      top: 0;
       list-style-type: none;
-      margin: 0;
-      padding: 0; }
-      /* line 62, ../sass/main.scss */
-      .menu .selection-container ul li {
-        position: relative;
-        float: left;
-        font-size: 13px;
-        width: 50%;
-        color: #00351d;
-        cursor: pointer;
-        padding: 0 0 5px 20px; }
-        /* line 71, ../sass/main.scss */
-        .menu .selection-container ul li:before {
-          position: absolute;
-          display: block;
-          content: "";
-          width: 8px;
-          height: 8px;
-          top: 4px;
-          left: 0;
-          background-color: white;
-          border: 1px solid;
-          border-color: #00351d; }
-        /* line 84, ../sass/main.scss */
-        .menu .selection-container ul li:hover {
-          color: #129a5f; }
-          /* line 87, ../sass/main.scss */
-          .menu .selection-container ul li:hover:before {
-            border-color: #129a5f; }
-        /* line 92, ../sass/main.scss */
-        .menu .selection-container ul li[data-active="true"] {
-          color: #129a5f; }
-          /* line 95, ../sass/main.scss */
-          .menu .selection-container ul li[data-active="true"]:before {
-            border-color: #129a5f;
-            background-color: #129a5f; }
+      color: white;
+      font-size: 30px;
+      padding: 0;
+      background-color: #00351d;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px;
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      opacity: 0;
+      -webkit-box-shadow: 0 30px 30px -25px black;
+      -moz-box-shadow: 0 30px 30px -25px black;
+      box-shadow: 0 30px 30px -25px black; }
+      /* line 96, ../sass/main.scss */
+      .user-query .selection ul:before {
+        position: absolute;
+        display: block;
+        content: "";
+        top: -20px;
+        left: 50%;
+        margin-left: -15px;
+        width: 0;
+        height: 0;
+        border-bottom: 20px solid #00351d;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent; }
+      /* line 110, ../sass/main.scss */
+      .user-query .selection ul li {
+        padding: 5px 25px; }
+        /* line 113, ../sass/main.scss */
+        .user-query .selection ul li:hover {
+          background-color: #129a5f; }
 
-/* line 107, ../sass/main.scss */
+/* line 121, ../sass/main.scss */
+.white-out {
+  z-index: 800;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8; }
+
+/*.menu{
+	width: 100%;
+
+	.selection-container{
+		position: relative;
+		float: left;
+		width: 50%;
+
+		&.cuisine:before{
+			position: absolute;
+			display: block;
+			content: "";
+			left: -25px;
+			width: 25px;
+			height: 100%;
+			background-image: url(../img/divider-shadow.jpg);
+			background-size: 100% 100%;
+			background-repeat: no-repeat;  
+		}
+
+		h2{
+			color: $brand-green;
+		}
+
+		ul{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+
+			li{
+				position: relative;
+				float: left;
+				font-size: 13px;
+				width: 50%;
+				color: $dark-green;
+				cursor: pointer;
+				padding: 0 0 5px 20px;
+
+				&:before{
+					position: absolute;
+					display: block;
+					content: "";
+					width: 8px;
+					height: 8px;
+					top: 4px;
+					left: 0;
+					background-color: white;
+					border: 1px solid;
+					border-color: $dark-green;
+				}
+
+				&:hover{
+					color: $brand-green;
+
+					&:before{
+						border-color: $brand-green;
+					}
+				}
+
+				&[data-active="true"]{
+					color: $brand-green;
+
+					&:before{
+						border-color: $brand-green;
+						background-color: $brand-green;
+					}
+				}
+			}
+		}
+	}
+}*/
+/* line 208, ../sass/main.scss */
 .shadow {
   width: 100%;
   height: 50px;
@@ -93,19 +220,21 @@
   clear: both;
   background-image: url(../img/block-shadow.jpg); }
 
-/* line 115, ../sass/main.scss */
+/* line 216, ../sass/main.scss */
 .top-shadow {
+  padding-top: 150px;
   background-position: center top; }
 
-/* line 119, ../sass/main.scss */
+/* line 221, ../sass/main.scss */
 .bottom-shadow {
   background-position: center bottom; }
 
-/* line 125, ../sass/main.scss */
+/* line 227, ../sass/main.scss */
 #map {
+  z-index: 0;
   height: 700px;
   clear: both; }
-  /* line 129, ../sass/main.scss */
+  /* line 232, ../sass/main.scss */
   #map .leaflet-marker-icon {
     position: absolute;
     /*&:after{

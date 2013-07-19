@@ -21,12 +21,10 @@ $(document).ready(function(){
 
 		genSet : function(){
 
-			$m.s.test = 'hello world';
-
-			console.log('test = ' + $m.s.test);
+			$m.s.map = $('#map');
 
 			// --- PINS ---
-			$m.s.pin = {}; // setting up the pin object
+			$m.s.pin = {}; // setting up the pin object to hold the following settings...
 			$m.s.pin.orgHgt = 473; // pin original height
 			$m.s.pin.orgWth = 292; // pin original width
 			$m.s.pin.smlRatio = 0.20;
@@ -37,10 +35,18 @@ $(document).ready(function(){
 			$m.s.pin.lrgWth = $m.s.pin.orgWth * $m.s.pin.lrgRatio;
 
 			// --- MENU ---
-			$m.s.sel = {};
-			$m.s.sel.loc = 'auckland';
-			$m.s.sel.cui = [];
-			$m.s.menu = $('.menu');
+			//$m.s.sel = {};
+			//$m.s.sel.loc = 'auckland';
+			//$m.s.sel.cui = [];
+			//$m.s.menu = $('.menu');
+
+			$m.s.phpData = ['blank', 'blank']; // an array to hold the selections -> $m.s.phpData[0] = cuisine -> $m.s.phpData[1] = region
+			$m.s.uQ = $('.user-query'); // user query dom reference
+			$m.s.swpTxt = $m.s.uQ.find('.swap-txt'); // menu text that is being swapped out
+			$m.s.pCity = $m.s.uQ.find('.pick-city').find('ul'); // pick-city dom reference
+			$m.s.pCuis = $m.s.uQ.find('.pick-cuisine').find('ul'); // pick-cuisine dom reference
+
+			$m.s.whtOut = $('.white-out'); // white out dom reference
 
 		}, // end of genSet fnc
 
@@ -61,20 +67,22 @@ $(document).ready(function(){
 
 		getJson : function(){ // get json from server...
 
-			$.getJSON('js/auckland.json', function($json){
+			$.ajax({
+				type: 'POST',
+				url: 'php/sort-json.php',
+				data: {"menuInfo" : ["Cnr of Victoria & Albert Streets, Auckland","Mai Thai"]},
+				dataType: 'json',
+				success: function($json) {
+					//console.log($json);
+					$m.s.json = $json;
+					console.log('returned content from php = ' + $m.s.json);
 
-				$m.s.json = $json;
-
-			})
-			.success(function() { /* alert("success"); */ })
-			.error(function() { /* alert("error"); */ })
-			.complete(function() {
-
-				console.log('got json');
-
-				$m.genIcon(); // generate icons
-				$m.listeners(); // set listeners
-
+					$m.genIcon(); // generate icons
+					$m.listeners(); // set listeners
+				},
+				error: function() {
+					console.log('json error!');
+				}
 			});
 
 		}, // end of getJson fnc
@@ -88,13 +96,14 @@ $(document).ready(function(){
 				$map = $m.s.map,
 				$smlHgt = $m.s.pin.smlHgt,
 				$smlWth = $m.s.pin.smlWth,
+				$lrgHgt = $m.s.pin.lrgHgt,
 				$sffIcon = L.icon({ // create silver fern farms pin object
 					iconUrl: 'img/special-pin.png', // main pin image directory
 					//iconRetinaUrl: 'my-icon@2x.png',
 					iconSize: [$smlWth, $smlHgt], // size of the icon
 					iconAnchor: [$smlWth / 2, $smlHgt], // point of the icon which will correspond to marker's location
 
-					popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+					popupAnchor: [0, ($lrgHgt + 5) * -1], // point from which the popup should open relative to the iconAnchor
 
 					shadowUrl: 'img/shadow.png', // pin shadow directory
 					//shadowRetinaUrl: 'my-icon-shadow@2x.png',
@@ -108,7 +117,7 @@ $(document).ready(function(){
 					iconSize: [25, 41], // size of the icon
 					iconAnchor: [12, 41], // point of the icon which will correspond to marker's location
 
-					popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
+					popupAnchor: [0, -45], // point from which the popup should open relative to the iconAnchor
 
 					shadowUrl: 'img/marker-shadow.png', // pin shadow directory
 					//shadowRetinaUrl: 'my-icon-shadow@2x.png',
@@ -116,7 +125,16 @@ $(document).ready(function(){
 					shadowAnchor: [12, 41] // the same for the shadow
 				}),
 				$pinLat = null,
-				$pinLng = null;
+				$pinLng = null,
+
+				// --- POPUP INFORMARION --
+				$pinInfo = null, // shell for pin information
+				$description = null,
+				$type = null,
+				$address = null,
+				$phone = null,
+				$web = null,
+				$hours = null;
 
 			console.log('json length = ' + $jsonLen);
 
@@ -124,6 +142,14 @@ $(document).ready(function(){
 
 				$pinLat = $json[$i].Latitude;
 				$pinLng = $json[$i].Longitude;
+				$description = $json[$i].Description;
+				$type = $json[$i].Type;
+				$address = $json[$i].Address;
+				$phone = $json[$i].Phone;
+				$web = $json[$i].Web;
+				$hours = $json[$i].Hours;
+
+				$pinInfo = $description + '<br>' + $type + '<br>' + $address + '<br>' + $phone + '<br>' + $web + '<br>' + $hours;
 
 				//console.log('json latitude = ' + $pinLat);
 				//console.log('json longitude = ' + $pinLng);
@@ -131,13 +157,17 @@ $(document).ready(function(){
 
 				if($i % 100 === 0){
 
-					L.marker([$pinLat, $pinLng], {icon: $sffIcon}).addTo($map);
+					L.marker([$pinLat, $pinLng], {icon: $sffIcon})
+						.addTo($map)
+						.bindPopup('<h2>Silver Fern Farms.....</h2>' + $pinInfo);
 
 				}else{
 
-					L.marker([$pinLat, $pinLng], {icon: $genIcon}).addTo($map);
+					L.marker([$pinLat, $pinLng], {icon: $genIcon})
+						.addTo($map)
+						.bindPopup($pinInfo);
 
-				} // emd of if statement
+				} // end of if statement
 
 			} // end of for loop
 
@@ -161,19 +191,31 @@ $(document).ready(function(){
 
 			});
 
-			$('.leaflet-marker-icon').on('click', function(e){
+			$('.leaflet-marker-icon').on('click', function(){
 
 				// e.preventDefault();
 
-			});
-
-			// --- MENU ---
-
-			$m.s.menu.on('click', 'li', function(){
-
-				$m.uiAct.menuClick($(this));
+				$m.uiAct.iconClick($(this));
 
 			});
+
+			// --- MAIN SELECTORS ---
+
+			$m.s.uQ.on('click', '.swap-txt', function(){
+
+				$m.uiAct.selClick($(this));
+
+			});
+
+			$m.s.uQ.on('click', 'li', function(){
+
+				$m.uiAct.selLstClick($(this));
+
+			});
+
+			//$m.s.uQ
+			//$m.s.pCity
+			//$m.s.pCuis 
 
 		}, // end of listeners fnc
 
@@ -223,7 +265,7 @@ $(document).ready(function(){
 
 				console.log('image src = ' + $special);
 
-				if($special !== 'img/special-pin.png'){
+				if($special !== 'img/special-pin.png' || $this.attr('data-active') === 'false'){
 
 					console.log('NOT SPECIAL PIN!');
 
@@ -245,87 +287,148 @@ $(document).ready(function(){
 
 			}, // end of iconLeave fnc
 
-			// --- MENU ---
+			iconClick : function($this){
 
-			menuClick : function($this){
+				console.log('icon click!');
 
-				console.log('menu click!');
+				var $special = $this.attr('src');
 
-				var $locSet = $m.s.sel.loc, // pull in the current location from settings
-					$cuiSet = $m.s.sel.cui, // pull in the cuisine array from settings
-					$thisSel = $this.attr('data-selection'), // this selection name
-					$thisAtv = $this.attr('data-active'),
-					$cont = $this.closest('div.selection-container'), // find the container
-					$contLoc = $cont.hasClass('location'); // is the selection within the location container - if not must be the cuisine container
+				console.log('image src = ' + $special);
 
-				console.log('');
-				console.log('you clicked the ' + $thisSel + ' button');
+				if($special !== 'img/special-pin.png'){
 
-				if($contLoc){ // if the clicked button resides within the location container...
+					console.log('NOT SPECIAL PIN!');
 
-					if($thisAtv === 'true'){ // if this button is already active - do nothing as we do not want to load the content a second time via an ajax request to the server...
+					return ''; // break the function
 
-						return ''; // break the function
+				} // end of is statement
 
-					} // end of if statement
+				var $atv = $this.attr('data-active');
 
-					$cont.find('li').attr({'data-active' : 'false'}); // make all selections active state inside the location container only = false
-					$this.attr({'data-active' : 'true'}); // make the clicked button's active state = true
+				// setting the active state so that when a user mouseleave's a pin that is active it will not shrink down...
+				if($atv === 'false'){ // if the pin is being clicked when it is not already active
 
-					console.log('inside the location container');
+					$this.attr({'data-active' : 'true'});
 
-					$locSet = $thisSel; // add the selection name to the location setting
+				}else{
 
-					//return ''; // break the function
-
-				}else{ // if the clicked button DOES NOT reside within the location container...
-
-					console.log('inside the cuisine container');
-
-					$cuiSet = [];  // reset the cuisine selection array
-
-					if($thisAtv === 'true'){ // if this button is already active - then change its state to = false
-
-						$this.attr({'data-active' : 'false'});
-
-					}else{ // else change its state to = true
-
-						$this.attr({'data-active' : 'true'});
-
-					} // end of if statement
-
-					$cont.find('li').each(function(){
-
-						//console.log('--> ' + $(this).attr('data-selection'));
-
-						$this = $(this), // re-establish $this to the current button in the loop
-						$thisAtv = $this.attr('data-active');
-
-						if($thisAtv === 'true'){ // if the current button in the loop is an active element...
-
-							$thisSel = $this.attr('data-selection');
-
-							$cuiSet.push($thisSel); // push the selection name into the cuisine array
-
-						} // end of if statement
-
-					}); // end of each function
+					$this.attr({'data-active' : 'false'});
 
 				} // end of if statement
 
-				$m.s.sel.loc = $locSet; // store the current location back into settings
-				$m.s.sel.cui = $cuiSet; // store the cuisine array back into settings
+			}, // end of iconClick
 
-				console.log('location name = ' + $locSet);
-				console.log('cusine array = ' + $cuiSet);
+			// --- MENU ---
 
-			} // end of menuCLick fnc
+			selClick : function($this){
+
+				console.log('selection click!');
+
+				var $city = $this.closest('.selection').hasClass('pick-city'),
+					$ulAct = null, // active selection
+					$ulDor = null; // dormant selection
+
+				if($city){
+
+					$ulAct = $m.s.pCity;
+					$ulDor = $m.s.pCuis;
+
+				}else{
+
+					$ulAct = $m.s.pCuis;
+					$ulDor = $m.s.pCity;
+
+				} // end of if statement
+
+				TweenMax.to($m.s.whtOut, 1, {
+					'opacity' : '0.8',
+					'display' : 'block'
+				});
+
+				// --- ANIMATE TO ACTIVE ---
+
+				TweenMax.set($ulAct, {'display' : 'block'});
+
+				TweenMax.to($ulAct, 1, {
+					'opacity' : '1',
+					'left' : '50%',
+					'transform' : 'translateX(-50%)',
+					'top' : '60px'
+				});
+
+				/// --- SET TO DORMANT ---
+
+				TweenMax.set($ulDor, {
+					'display' : 'none',
+					'opacity' : '0',
+					'left' : '0',
+					'transform' : 'translateX(-50%)',
+					'top' : '0'
+				});
+
+			}, // end of selCLick fnc
+
+			selLstClick : function($this){
+
+				console.log('selection list click!');
+
+				var $liTxt = $this.text(), // what is the list item name
+					$ul = $this.closest('ul'),
+					$sel = $this.closest('.selection'),
+					$swpTxt = $sel.find('.swap-txt'), // find the text to swap out
+					$i = 0, // currently targeting cuisine location in selection array (will change further down if need be)
+					$phpData = $m.s.phpData;
+
+				console.log('current selection text = ' + $swpTxt.text());
+				console.log('list item text = ' + $liTxt);
+
+				$swpTxt.text($liTxt); // change te selection text to match the list item name
+
+				if($sel.hasClass('pick-city')){ // if the selection is in reference to the city then change the array reference to 1
+
+					$i = 1;
+
+				} // end of if statement
+
+				$m.s.phpData[$i] = $liTxt;
+
+				console.log('cusine = ' + $m.s.phpData[0] + ' | region = ' + $m.s.phpData[1]);
+
+				/// --- SET TO DORMANT ---
+
+				TweenMax.set($ul, {
+					'display' : 'none',
+					'opacity' : '0',
+					'left' : '0',
+					'transform' : 'translateX(-50%)',
+					'top' : '0'
+				});
+
+				if($phpData[0] !== 'blank' && $phpData[1] !== 'blank'){
+
+					console.log('POPULATE MAP!');
+
+					//TweenMax.to($m.s.map, 1, {'margin-top' : '100px'});
+
+					TweenMax.to($m.s.whtOut, 1, {
+						'opacity' : '0',
+						'display' : 'none'
+					});
+
+					TweenMax.to($m.s.uQ, 1, {
+						'font-size' : '30px',
+						'left' : '0',
+						'width' : '100%',
+						'padding' : '25px'
+					});
+
+				} // end of if statement
+
+			} // end of selLstClick fnc
 
 		} // end of ui actions obj
 
 	}; // end of module container ($m) obj
-
-	//marker.bindPopup("<b>Hello world!</b><br>I am a popup.");//.openOn(map);
 
 	(function(){
 
@@ -335,8 +438,6 @@ $(document).ready(function(){
 
 
 }); // end of document ready
-
-
 
 
 

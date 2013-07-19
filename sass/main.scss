@@ -1,4 +1,5 @@
 @import "compass/css3";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic);
 
 *, *:after, *:before {
 	@include box-sizing(border-box);
@@ -13,12 +14,13 @@
 $gray: #999999;
 $brand-green: #129a5f;
 $dark-green: #00351d;
+$col-shadow: #000;
 
 .module-container{
-	//position: absolute;
+	position: relative;
 	width: 940px;
 	margin: 0 auto 0 auto;
-	font-family: Arial, Helvetica, sans-serif;
+	//font-family: Arial, Helvetica, sans-serif;
 	text-decoration: none;
 }
 
@@ -26,11 +28,110 @@ $dark-green: #00351d;
 	width: 100%;
 	height: 214px;
 	background-image: url(../img/temp-stuff-header.png);
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+
+.user-query{
+	z-index: 900;
+	position: absolute;
+	top: 0;
+	left: 45px;
+	width: 850px;
+	height: auto;
+	padding: 50px;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 200;
+	font-style: italic;
+	text-align: center;
+	font-size: 50px;
+	@include text-shadow(0px 2px 3px $dark-green);
+	@include border-radius(15px);
+	@include box-shadow(0 50px 50px -50px $col-shadow);
+
+	&:before, &:after{
+		z-index: -1;
+		position: absolute;
+		display: block;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		@include border-radius(15px);
+	}
+
+	&:before{
+		background-color: $brand-green;
+	}
+
+	&:after{
+		@include background(linear-gradient(bottom, rgba($dark-green, 0.5), rgba($dark-green, 0)));
+	}
+
+	.selection{
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		color: $dark-green;
+		@include text-shadow(none);
+
+		ul{
+			z-index: 1000;
+			position: absolute;
+			display: none;
+			left: 0; // offset for greensock tween
+			top: 0; // offset for greensock tween
+			list-style-type: none;
+			color: white;
+			font-size: 30px;
+			padding: 0;
+			background-color: $dark-green;
+			@include transform(translateX(-50%));
+			@include border-radius(5px);
+			@include opacity(0); // offset for greensock tween
+			@include box-shadow(0 30px 30px -25px $col-shadow);
+
+			&:before{
+				position: absolute;
+				display: block;
+				content: "";
+				top: -20px;
+				left: 50%;
+				margin-left: -15px;
+				width: 0; 
+				height: 0;
+				border-bottom: 20px solid $dark-green;
+				border-left: 20px solid transparent; 
+				border-right: 20px solid transparent;
+			}
+
+			li{
+				padding: 5px 25px;
+
+				&:hover{
+					background-color: $brand-green;
+				}
+			}
+		}
+	}
+}
+
+.white-out{
+	z-index: 800;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+	@include opacity(0.8);
 }
 
 // --- MENU ---
 
-.menu{
+/*.menu{
 	width: 100%;
 
 	.selection-container{
@@ -100,7 +201,7 @@ $dark-green: #00351d;
 			}
 		}
 	}
-}
+}*/
 
 // --- SHADOW ---
 
@@ -113,6 +214,7 @@ $dark-green: #00351d;
 }
 
 .top-shadow{
+	padding-top: 150px;
 	background-position: center top;
 }
 
@@ -123,6 +225,7 @@ $dark-green: #00351d;
 // --- MAP ---
 
 #map{
+	z-index: 0;
 	height: 700px;
 	clear: both;
 

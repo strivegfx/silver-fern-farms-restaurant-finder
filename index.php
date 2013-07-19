@@ -29,12 +29,46 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+        <div class="temp-stuff-header"></div>
 
         <div class="module-container">
 
-            <div class="temp-stuff-header"></div>
+            <div class="user-query">
+                I want to see all of the
+                <div class="selection pick-cuisine">
+                    <span class="swap-txt">pick cuisine</span>
+                    <ul>
+                        <li data-selection="bistro">Bistro</li>
+                        <li data-selection="european">European</li>
+                        <li data-selection="french">French</li>
+                        <li data-selection="italian">Italian</li>
+                        <li data-selection="japanese">Japanese</li>
+                        <li data-selection="mediterranean">Mediterranean</li>
+                        <li data-selection="seafood">Seafood</li>
+                        <li data-selection="steak">Steak</li>
+                        <li data-selection="thai">Thai</li>
+                        <li data-selection="vietnamese">Vietnamese</li>
+                    </ul>
+                </div>
+                restaurants in
+                <div class="selection pick-city">
+                    <span class="swap-txt">pick city</span>
+                    <ul>
+                        <li data-selection="auckland">Auckland</li>
+                        <li data-selection="otago">Otago</li>
+                        <li data-selection="christchurch">Christchurch</li>
+                        <li data-selection="dunedin">Dunedin</li>
+                        <li data-selection="hamilton">Hamilton</li>
+                        <li data-selection="hawkes-bay">Hawke's Bay</li>
+                        <li data-selection="canterbury">Canterbury</li>
+                        <li data-selection="wellington">Wellington</li>
+                    </ul>
+                </div>
+            </div>
 
-            <div class="menu">
+            <div class="white-out"></div>
+
+            <!--<div class="menu">
 
                 <div class="selection-container location">
                     <h2>location</h2>
@@ -66,7 +100,7 @@
                     </ul>
                 </div>
 
-            </div>
+            </div>-->
 
             <div class="shadow top-shadow"></div>
 
