@@ -15,9 +15,10 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/ht5bp.css">
 
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+        <!-- mapbox -->
+        <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.css' rel='stylesheet' />
         <!--[if lte IE 8]>
-            <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
+        <link href='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.ie.css' rel='stylesheet' />
         <![endif]-->
 
         <link rel="stylesheet" href="css/main.css">
@@ -38,6 +39,7 @@
                 <div class="selection pick-cuisine">
                     <span class="swap-txt">pick cuisine</span>
                     <ul>
+                        <li class="close"></li>
                         <li data-selection="bistro">Bistro</li>
                         <li data-selection="european">European</li>
                         <li data-selection="french">French</li>
@@ -54,6 +56,8 @@
                 <div class="selection pick-city">
                     <span class="swap-txt">pick city</span>
                     <ul>
+                        <li class="close"></li>
+                        <li data-selection="my-location">my location</li>
                         <li data-selection="auckland">Auckland</li>
                         <li data-selection="otago">Otago</li>
                         <li data-selection="christchurch">Christchurch</li>
@@ -67,40 +71,6 @@
             </div>
 
             <div class="white-out"></div>
-
-            <!--<div class="menu">
-
-                <div class="selection-container location">
-                    <h2>location</h2>
-                    <ul>
-                        <li data-selection="auckland" data-active="false">Auckland</li>
-                        <li data-selection="otago" data-active="false">Otago</li>
-                        <li data-selection="christchurch" data-active="false">Christchurch</li>
-                        <li data-selection="dunedin" data-active="false">Dunedin</li>
-                        <li data-selection="hamilton" data-active="false">Hamilton</li>
-                        <li data-selection="hawkes-bay" data-active="false">Hawke's Bay</li>
-                        <li data-selection="canterbury" data-active="false">Canterbury</li>
-                        <li data-selection="wellington" data-active="false">Wellington</li>
-                    </ul>
-                </div>
-
-                <div class="selection-container cuisine">
-                    <h2>cuisine</h2>
-                    <ul>
-                        <li data-selection="bistro" data-active="false">Bistro</li>
-                        <li data-selection="european" data-active="false">European</li>
-                        <li data-selection="french" data-active="false">French</li>
-                        <li data-selection="italian" data-active="false">Italian</li>
-                        <li data-selection="japanese" data-active="false">Japanese</li>
-                        <li data-selection="mediterranean" data-active="false">Mediterranean</li>
-                        <li data-selection="seafood" data-active="false">Seafood</li>
-                        <li data-selection="steak" data-active="false">Steak</li>
-                        <li data-selection="thai" data-active="false">Thai</li>
-                        <li data-selection="vietnamese" data-active="false">Vietnamese</li>
-                    </ul>
-                </div>
-
-            </div>-->
 
             <div class="shadow top-shadow"></div>
 
@@ -116,7 +86,13 @@
 
         <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.1/TweenMax.min.js"></script>
 
-        <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+        <!-- mapbox -->
+        <script src='//api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.js'></script>
+
+        <!-- google geolocation api -->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <!-- my code -->
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
