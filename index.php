@@ -38,44 +38,6 @@
                 I want to see all of the
                 <div class="selection pick-cuisine">
                     <span class="swap-txt">pick cuisine</span>
-<<<<<<< HEAD
-                    <ul>
-                        <li data-selection="bistro">Bistro</li>
-                        <li data-selection="european">European</li>
-                        <li data-selection="french">French</li>
-                        <li data-selection="italian">Italian</li>
-                        <li data-selection="japanese">Japanese</li>
-                        <li data-selection="mediterranean">Mediterranean</li>
-                        <li data-selection="seafood">Seafood</li>
-                        <li data-selection="steak">Steak</li>
-                        <li data-selection="thai">Thai</li>
-                        <li data-selection="vietnamese">Vietnamese</li>
-                    </ul>
-                </div>
-                restaurants in
-                <div class="selection pick-city">
-                    <span class="swap-txt">pick city</span>
-                    <ul>
-                        <li data-selection="auckland">Auckland</li>
-                        <li data-selection="otago">Otago</li>
-                        <li data-selection="christchurch">Christchurch</li>
-                        <li data-selection="dunedin">Dunedin</li>
-                        <li data-selection="hamilton">Hamilton</li>
-                        <li data-selection="hawkes-bay">Hawke's Bay</li>
-                        <li data-selection="canterbury">Canterbury</li>
-                        <li data-selection="wellington">Wellington</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="white-out"></div>
-
-            <!--<div class="menu">
-
-                <div class="selection-container location">
-                    <h2>location</h2>
-=======
->>>>>>> revised-menu
                     <ul>
                         <li class="close"></li>
                         <li data-selection="bistro">Bistro</li>
@@ -106,12 +68,7 @@
                         <li data-selection="wellington">Wellington</li>
                     </ul>
                 </div>
-<<<<<<< HEAD
-
-            </div>-->
-=======
             </div>
->>>>>>> revised-menu
 
             <div class="white-out"></div>
 
@@ -120,6 +77,37 @@
             <div id="map"></div>
 
             <div class="shadow bottom-shadow"></div>
+
+            <div class="expanded-modules-container clear-fix">
+
+                <a href="#" class="expanded-module">
+                    <div class="image" style="background-image: url(img/expanded-img-1.jpg);"></div>
+                    <h2>Lorem ipsum dolor sit amet</h2>
+                    <span>Cras accumsan eu sem sit amet placerat. Aliquam viverra turpis orci, eu porta lectus sodales sed. Phasellus eget lacinia felis, non malesuada sem.</span>
+                    <a class="website"></a>
+                    <a class="twitter"></a>
+                    <a class="facebook"></a>
+                </a>
+
+                <a href="#" class="expanded-module">
+                    <div class="image" style="background-image: url(img/expanded-img-2.jpg);"></div>
+                    <h2>In vitae tempor massa</h2>
+                    <span>Vivamus id suscipit enim. Ut massa libero, venenatis non tortor quis, aliquet ultrices eros. Aliquam vitae velit dolor. Sed rhoncus fermentum lacus.</span>
+                    <a class="website"></a>
+                    <a class="twitter"></a>
+                    <a class="facebook"></a>
+                </a>
+
+                <a href="#" class="expanded-module">
+                    <div class="image" style="background-image: url(img/expanded-img-3.jpg);"></div>
+                    <h2>Donec egestas et purus sed</h2>
+                    <span>Quisque vestibulum ullamcorper lorem, sit amet pellentesque ligula vehicula mattis. Etiam pretium ultrices mi. Etiam ultrices egestas nunc, vel sagittis nisl bibendum non.</span>
+                    <a class="website"></a>
+                    <a class="twitter"></a>
+                    <a class="facebook"></a>
+                </a>
+
+            </div>
 
         </div>
 

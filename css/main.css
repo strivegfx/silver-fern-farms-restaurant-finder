@@ -16,9 +16,18 @@
   position: relative;
   width: 940px;
   margin: 0 auto 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
   text-decoration: none; }
 
 /* line 27, ../sass/main.scss */
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 30px;
+  margin: 0.83em 0; }
+
+/* line 35, ../sass/main.scss */
 .temp-stuff-header {
   width: 100%;
   height: 214px;
@@ -26,14 +35,10 @@
   background-position: center top;
   background-repeat: no-repeat; }
 
-/* line 35, ../sass/main.scss */
+/* line 43, ../sass/main.scss */
 .user-query {
   z-index: 900;
-<<<<<<< HEAD
-  position: absolute;
-=======
   position: relative;
->>>>>>> revised-menu
   top: 0;
   left: 45px;
   width: 850px;
@@ -54,7 +59,7 @@
   -webkit-box-shadow: 0 50px 50px -50px black;
   -moz-box-shadow: 0 50px 50px -50px black;
   box-shadow: 0 50px 50px -50px black; }
-  /* line 53, ../sass/main.scss */
+  /* line 61, ../sass/main.scss */
   .user-query:before, .user-query:after {
     z-index: -1;
     position: absolute;
@@ -69,24 +74,24 @@
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
     border-radius: 15px; }
-  /* line 65, ../sass/main.scss */
+  /* line 73, ../sass/main.scss */
   .user-query:before {
     background-color: #129a5f; }
-  /* line 69, ../sass/main.scss */
+  /* line 77, ../sass/main.scss */
   .user-query:after {
     background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(0, 53, 29, 0.5)), color-stop(100%, rgba(0, 53, 29, 0)));
     background: -webkit-linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0));
     background: -moz-linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0));
     background: -o-linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0));
     background: linear-gradient(bottom, rgba(0, 53, 29, 0.5), rgba(0, 53, 29, 0)); }
-  /* line 73, ../sass/main.scss */
+  /* line 81, ../sass/main.scss */
   .user-query .selection {
     display: inline-block;
     position: relative;
     cursor: pointer;
     color: #00351d;
     text-shadow: none; }
-    /* line 80, ../sass/main.scss */
+    /* line 88, ../sass/main.scss */
     .user-query .selection ul {
       z-index: 1000;
       position: absolute;
@@ -113,7 +118,7 @@
       -webkit-box-shadow: 0 30px 30px -25px black;
       -moz-box-shadow: 0 30px 30px -25px black;
       box-shadow: 0 30px 30px -25px black; }
-      /* line 96, ../sass/main.scss */
+      /* line 104, ../sass/main.scss */
       .user-query .selection ul:before {
         position: absolute;
         display: block;
@@ -126,19 +131,13 @@
         border-bottom: 20px solid #00351d;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent; }
-      /* line 110, ../sass/main.scss */
+      /* line 118, ../sass/main.scss */
       .user-query .selection ul li {
         padding: 5px 25px; }
-        /* line 113, ../sass/main.scss */
-<<<<<<< HEAD
-        .user-query .selection ul li:hover {
-          background-color: #129a5f; }
-
-/* line 121, ../sass/main.scss */
-=======
+        /* line 121, ../sass/main.scss */
         .user-query .selection ul li[data-selection="my-location"] {
           display: none; }
-        /* line 117, ../sass/main.scss */
+        /* line 125, ../sass/main.scss */
         .user-query .selection ul li.close {
           position: absolute;
           display: block;
@@ -159,15 +158,14 @@
           -webkit-box-shadow: -5px 5px 15px 0 rgba(0, 0, 0, 0.5);
           -moz-box-shadow: -5px 5px 15px 0 rgba(0, 0, 0, 0.5);
           box-shadow: -5px 5px 15px 0 rgba(0, 0, 0, 0.5); }
-          /* line 132, ../sass/main.scss */
+          /* line 140, ../sass/main.scss */
           .user-query .selection ul li.close:hover {
             background-position: center top; }
-        /* line 137, ../sass/main.scss */
+        /* line 145, ../sass/main.scss */
         .user-query .selection ul li:hover {
           background-color: #129a5f; }
 
-/* line 146, ../sass/main.scss */
->>>>>>> revised-menu
+/* line 154, ../sass/main.scss */
 .white-out {
   z-index: 800;
   position: absolute;
@@ -179,133 +177,99 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   opacity: 0.8; }
 
-<<<<<<< HEAD
-/*.menu{
-	width: 100%;
-
-	.selection-container{
-		position: relative;
-		float: left;
-		width: 50%;
-
-		&.cuisine:before{
-			position: absolute;
-			display: block;
-			content: "";
-			left: -25px;
-			width: 25px;
-			height: 100%;
-			background-image: url(../img/divider-shadow.jpg);
-			background-size: 100% 100%;
-			background-repeat: no-repeat;  
-		}
-
-		h2{
-			color: $brand-green;
-		}
-
-		ul{
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-
-			li{
-				position: relative;
-				float: left;
-				font-size: 13px;
-				width: 50%;
-				color: $dark-green;
-				cursor: pointer;
-				padding: 0 0 5px 20px;
-
-				&:before{
-					position: absolute;
-					display: block;
-					content: "";
-					width: 8px;
-					height: 8px;
-					top: 4px;
-					left: 0;
-					background-color: white;
-					border: 1px solid;
-					border-color: $dark-green;
-				}
-
-				&:hover{
-					color: $brand-green;
-
-					&:before{
-						border-color: $brand-green;
-					}
-				}
-
-				&[data-active="true"]{
-					color: $brand-green;
-
-					&:before{
-						border-color: $brand-green;
-						background-color: $brand-green;
-					}
-				}
-			}
-		}
-	}
-}*/
-/* line 208, ../sass/main.scss */
-=======
-/* line 159, ../sass/main.scss */
->>>>>>> revised-menu
+/* line 167, ../sass/main.scss */
 .shadow {
   width: 100%;
   height: 50px;
   clear: both;
   background-image: url(../img/block-shadow.jpg); }
+  /* line 173, ../sass/main.scss */
+  .shadow.top-shadow {
+    background-position: center top; }
+  /* line 177, ../sass/main.scss */
+  .shadow.bottom-shadow {
+    background-position: center bottom; }
 
-<<<<<<< HEAD
-/* line 216, ../sass/main.scss */
-=======
-/* line 166, ../sass/main.scss */
->>>>>>> revised-menu
-.top-shadow {
-  padding-top: 150px;
-  background-position: center top; }
-
-<<<<<<< HEAD
-/* line 221, ../sass/main.scss */
-.bottom-shadow {
-  background-position: center bottom; }
-
-/* line 227, ../sass/main.scss */
-=======
-/* line 170, ../sass/main.scss */
-.bottom-shadow {
-  background-position: center bottom; }
-
-/* line 176, ../sass/main.scss */
->>>>>>> revised-menu
+/* line 184, ../sass/main.scss */
 #map {
   z-index: 0;
-  height: 700px;
+  height: 700px !important;
   clear: both; }
-<<<<<<< HEAD
-  /* line 232, ../sass/main.scss */
-  #map .leaflet-marker-icon {
-    position: absolute;
-    /*&:after{
-    	position: absolute;
-    	display: block;
-    	content: "HELLO";
-    	width: 50px;
-    	height: 25px;
-    	background-color: red;
-    }*/ }
-=======
-  /* line 181, ../sass/main.scss */
-  #map img[src*="http://a.tiles.mapbox.com/v3/marker/pin-l+333333.png"] {
+  /* line 190, ../sass/main.scss */
+  #map .leaflet-marker-icon[title="silver-fern-farms"] {
     background-image: url("../img/silver-fern-farms-marker.png") !important;
     background-size: cover !important;
     width: 50px !important;
     display: inline-block !important;
     padding: 128px 0 0 0 !important;
     height: 0px !important; }
->>>>>>> revised-menu
+    /* line 198, ../sass/main.scss */
+    #map .leaflet-marker-icon[title="silver-fern-farms"]:hover, #map .leaflet-marker-icon[title="silver-fern-farms"]:focus {
+      -webkit-transition: width 0.25s ease, left 0.25s ease, top 0.25s ease, padding 0.25s ease;
+      -moz-transition: width 0.25s ease, left 0.25s ease, top 0.25s ease, padding 0.25s ease;
+      -o-transition: width 0.25s ease, left 0.25s ease, top 0.25s ease, padding 0.25s ease;
+      transition: width 0.25s ease, left 0.25s ease, top 0.25s ease, padding 0.25s ease;
+      width: 70px !important;
+      left: -10px;
+      top: -25px;
+      padding: 179px 0 0 0 !important; }
+  /* line 208, ../sass/main.scss */
+  #map .leaflet-popup .marker-title {
+    display: none; }
+
+/* line 213, ../sass/main.scss */
+.expanded-modules-container {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  width: 100%;
+  height: auto; }
+  /* line 219, ../sass/main.scss */
+  .expanded-modules-container .expanded-module {
+    position: relative;
+    width: 33%;
+    height: 400px;
+    padding: 0 25px 25px 25px;
+    float: left;
+    overflow: hidden;
+    text-decoration: none; }
+    /* line 228, ../sass/main.scss */
+    .expanded-modules-container .expanded-module:after {
+      z-index: 1;
+      position: absolute;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 70px;
+      bottom: 0;
+      left: 0;
+      background-image: url(../img/copy-fade.png); }
+    /* line 240, ../sass/main.scss */
+    .expanded-modules-container .expanded-module .image {
+      position: relative;
+      width: 143px;
+      height: 190px;
+      left: 50%;
+      margin-left: -72px;
+      background-size: cover;
+      background-position: center center; }
+      /* line 249, ../sass/main.scss */
+      .expanded-modules-container .expanded-module .image:after {
+        z-index: 1;
+        position: absolute;
+        display: block;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: url(../img/pin-image-block.png);
+        background-position: center center; }
+    /* line 263, ../sass/main.scss */
+    .expanded-modules-container .expanded-module h2 {
+      color: #129a5f; }
+    /* line 267, ../sass/main.scss */
+    .expanded-modules-container .expanded-module span {
+      font-weight: 300;
+      font-style: italic;
+      font-size: 16px;
+      color: #00351d; }
